@@ -10,22 +10,24 @@ preparation to production runs.
 • Inspired by Justin A. Lemkul’s GROMACS tutorials  
 
 # Project Structure
-gromacs_gui
- app.py
- input_files
-   ions.mdp
-   minim.mdp
-   nvt.mdp
-   npt.mdp
-   md.mdp
- static
-   protein.png
- templates
-   home.html
-   prep.html
-   analyze.html
- requirements.txt
- README.md
+```
+gromacs_gui/
+├── app.py
+├── input_files/
+│   ├── ions.mdp
+│   ├── minim.mdp
+│   ├── nvt.mdp
+│   ├── npt.mdp
+│   └── md.mdp
+├── static/
+│   └── protein.png
+├── templates/
+│   ├── home.html
+│   ├── prep.html
+│   └── analyze.html
+├── requirements.txt
+└── README.md
+```
 
 # Requirements
 Python 3.8 +  
