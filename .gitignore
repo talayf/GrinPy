@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+
+# macOS junk
+.DS_Store
+
+# GROMACS output
+*.gro
+*.top
+*.tpr
+*.trr
+*.edr
+*.log
+*.cpt
+*.itp
+*.xvg
+*.pdb
+*.mdpout
+
+# Flask / sqlite
+*.sqlite3

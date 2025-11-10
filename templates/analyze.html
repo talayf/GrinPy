@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"/>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <title>Analyze</title>
+  <style>
+    * {box-sizing: border-box;margin: 0;padding: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;scroll-behavior: smooth;}
+    *,
+    *:before,
+    *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+/* Navbar */
+    .navbar {
+      background: #131313;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar__container {
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+      z-index: 1;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 50px;
+    }
+    #navbar__logo {
+      background-color: white;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 2rem;
+    }
+    .navbar__menu {display: flex;align-items: center;list-style: none;}
+    .navbar__item {height: 80px;}
+    .navbar__links {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 125px;
+      text-decoration: none;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+    .navbar__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1rem;
+      width: 100%;
+      text-decoration: none;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      padding: 10px 20px;
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      background-image: linear-gradient(to right, #5d196e, #6c1e80);
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .button:hover {text-decoration: none;color: rgb(179, 168, 168);}
+    .navbar__links:hover {color: #c37ed4;transition: all 0.3s ease;text-decoration: none;}
+    /*Screen adjustment*/
+    @media screen and (max-width: 2 60px) {
+      .navbar__container {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+      }
+      .navbar__menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: -1;
+      }
+      .navbar__menu.active {
+        background: #131313;
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 60vh;
+        font-size: 1.6rem;
+      }
+      #navbar__logo {padding-left: 25px;}
+      .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+      }
+      .navbar__item {width: 100%;}
+      .navbar__links {text-align: center;padding: 2rem;width: 100%;display: table;}
+      .navbar__btn {padding-bottom: 2rem;}
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80px;
+        margin: 0;
+      }
+    }
+/* Main Section */
+    .main {
+      background-color: #000000;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-bottom:750px;
+      padding-right: 60px;
+    }
+    .main_containerheader{
+      background-color: #ffffff1a;
+      margin-left: 60px;
+    }
+    .main_containerheader h2 {
+      font-size: 1rem;
+      background: #ffffff;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+      text-transform: uppercase;
+      text-align: left;
+      padding-left: 60px;
+      display: inline
+    }
+    .main_containertitle{margin-left: 60px;}
+    .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    input.larger {width: 11px;height: 11px;}
+    input[type=submit]{
+      background-color: #ffffff1a;
+      border: none;
+      color: white;
+      font-size: 20px;
+      padding: 10px 32px;
+      text-decoration: none;
+      margin-top: 30px;
+      cursor: pointer;
+      position: relative;
+    }
+    .middle {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navbar Section -->
+  <nav class="navbar">
+      <div class="navbar__container">
+      <div class="navbar__toggle" id="mobile-menu">
+      <span class="bar"></span> <span class="bar"></span>
+      <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">    
+      <li class="navbar__btn">
+        <a href="https://manual.gromacs.org/2020.5/download.html" class="navbar__links" target="_blank" class="text-light" style="text-decoration: none;">Install Gromacs</a>
+      </li>
+      <li class="navbar__item">
+      <a href="/" class="navbar__links" id="home-page">Go Back</a>
+      </li>
+      </ul>
+      </div>
+  </nav>
+<!-- Main Section -->
+  <div class="main">
+    <div class="middle">
+      <h1 style="color:#efbdfb87;font-size: 90px;padding-top: 100px;padding-bottom:100px;background-color:#5d196e43;">Under Construction</h1>
+    </div>
+  </div>
+
+<!--Common script for each page-->
+  <script>
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.navbar__menu');
+    const navLogo = document.querySelector('#navbar__logo');
+    // Display Mobile Menu
+    const mobileMenu = () => {
+      menu.classList.toggle('is-active');
+      menuLinks.classList.toggle('active');
+    };
+    menu.addEventListener('click', mobileMenu);
+    window.addEventListener('scroll', highlightMenu);
+    window.addEventListener('click', highlightMenu);
+    //  Close mobile Menu when clicking on a menu item
+    const hideMobileMenu = () => {
+      const menuBars = document.querySelector('.is-active');
+      if (window.innerWidth <= 768 && menuBars) {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.remove('active');
+      }
+    };
+    menuLinks.addEventListener('click', hideMobileMenu);
+    navLogo.addEventListener('click', hideMobileMenu);
+  </script>
+</body>
+
+</html>

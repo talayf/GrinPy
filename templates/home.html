@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Home</title>
+  <style>
+    * {box-sizing: border-box;margin: 0;padding: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;scroll-behavior: smooth;}
+/* Navbar */
+    .navbar {
+      background: #131313;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar__container {
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+      z-index: 1;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+    #navbar__logo {
+      background-color: white;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 2rem;
+    }
+    .navbar__menu {display: flex;align-items: center;list-style: none;}
+    .navbar__item {height: 80px;}
+    .navbar__links {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 125px;
+      text-decoration: none;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+    .navbar__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1rem;
+      width: 100%;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      padding: 10px 20px;
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      background-image: linear-gradient(to right, #5d196e, #6c1e80);
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .button:hover {text-decoration: none;color: rgb(179, 168, 168);}
+    .navbar__links:hover {color: #c37ed4;transition: all 0.3s ease;text-decoration: none;}
+    /* Mobile Responsive */
+    @media screen and (max-width: 960px) {
+      .navbar__container {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+      }
+      .navbar__menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: -1;
+      }
+      .navbar__menu.active {
+        background: #131313;
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 60vh;
+        font-size: 1.6rem;
+      }
+      #navbar__logo {padding-left: 25px;}
+      .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+      }
+      .navbar__item {width: 100%;}
+      .navbar__links {text-align: center;padding: 2rem;width: 100%;display: table;}
+      .navbar__btn {padding-bottom: 2rem;}
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80px;
+        margin: 0;
+      }
+    }
+/* Hero Section */
+    /* Background */
+    .bg {animation:slide 3s ease-in-out infinite alternate;background-image: linear-gradient(-60deg, #000000 50%, #000000 50%);bottom:0;left:-50%;opacity:.7;position:fixed;right:-50%; top:0;z-index:-1;}
+    .bg2 {animation-direction:alternate-reverse;animation-duration:4s;}
+    .bg3 {animation-duration:5s;}
+    @keyframes slide {0% {transform:translateX(-25%);}100% {transform:translateX(25%);}}
+    .hero {padding: 200px 0;} 
+    .hero__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 90%;
+      text-align: center;
+      padding: 30px;
+    }
+    .hero__heading {font-size: 100px;margin-bottom: 24px;color: #fff;}
+    .hero__heading span {
+      background-color: white;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -mo-text-fill-color: transparent;
+    }
+    .hero__description {
+      font-size: 60px;
+      background-color: #790d94;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+      background-size: 100%;
+    }
+    .highlight {border-bottom: 4px solid #c31aed3f;} /*for navbar*/
+    /* Mobile Responsive */
+    @media screen and (max-width: 768px) {.hero__heading {font-size: 60px;}.hero__description {font-size: 40px;}}
+
+/* About Section */
+    .main {
+      background-image: url('/static/2o3.png');
+      background-repeat: no-repeat;
+      background-size:cover;
+      padding:10rem 0;
+    }
+    .main__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      height: 90%;
+      padding: 0 50px;
+    }
+    .main__content {color: #fff;width: 100%;}
+    .main__content h1 {
+      font-size: 3rem;
+      background: #ffffff;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+      text-transform: uppercase;
+      margin-bottom: 100px;
+      text-align: center;
+    }
+    .main__content p {
+      margin-top: 1rem;
+      margin-bottom: 7rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-align: justify;
+      margin-right: 60px;
+      margin-left: 60px;
+    }
+    /* Mobile Responsive */
+    @media screen and (max-width: 1100px) {
+      .main{
+        background: url('/static/2o3.png') no-repeat center center; 
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+      .main__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+        height: 90%;
+      }
+      .main__content {text-align: center;margin-bottom: 4rem;}
+      .main__content h1 {font-size: 2.5rem;margin-top: 2rem;}
+      .main__content h2 {font-size: 3rem;}
+      .main__content p {margin-top: 1rem;font-size: 1.5rem;}
+    }
+/* Services Section */
+    .services {
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding-top: 130px;
+    }
+    .services h1 {
+      background: white;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+      margin-bottom: 5rem;
+      font-size: 2.5rem;
+    }
+    .services__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    .services__card {
+      margin:10px;
+      margin-bottom: 300px;
+      height: 300px;
+      width: 400px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #fff;
+      background-color: #8c13aa3f;
+      transition: 0.3s ease-in;
+    }
+    .services__card h2 {text-align: center;}
+    .services__card p {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 15px;
+      font-weight: lighter;
+    }
+    .services__card:hover {
+      transform: scale(1.05);
+      transition: 0.3s ease-in;
+      cursor: pointer;
+    }
+    .vertical-position {
+      padding-top: 30px;
+      padding-left: 143px;
+      padding-bottom: 10px;
+      justify-content: center;
+    }
+    .main__btn {
+      font-size: 1.2rem;
+      background: #510c633f;
+      padding: 5px 5px;
+      border: 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.35s;
+      outline: none;
+    }
+    .main__btn a {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding: 14px 24px;
+      text-decoration: none;
+    }
+    .main__btn:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #837a7f5e;
+      transition: all 0.35s;
+      border-radius: 4px;
+    }
+    .main__btn:hover {color: #fff;}
+    .main__btn:hover:after {width: 100%;}
+    /* Mobile Responsive */
+    @media screen and (max-width: 1300px) {.services__wrapper {grid-template-columns: 1fr 1fr;}}
+    @media screen and (max-width: 768px) {.services__wrapper {grid-template-columns: 1fr;}}
+/* Contact Section*/
+    @import url(//fonts.googleapis.com/css?family=Montserrat:300,400,500);
+    .contact4 {
+      font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+      color: #ffffff;
+      font-weight: 300;
+      padding-bottom: 110px;
+      position: absolute;
+    }
+    .contact4 .right-image {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 0;
+    }
+    .contact4.bg-info {background-color: #000000 !important;}
+    .contact4 .text-inverse {color: #3e4555 !important;}
+    .e-mail:before {content: attr(data-website) "\0040" attr(data-user);unicode-bidi: bidi-override;direction: rtl;} /* protect emails */
+  </style>
+</head>
+
+<body>
+<!-- Navbar Section -->
+  <nav class="navbar">
+    <div class="navbar__container">
+    <a href="#home" id="navbar__logo" style="background-color:#ad5cc1;">GrinPy</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="#home" class="navbar__links" id="home-page">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#about" class="navbar__links" id="about-page">About</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#services" class="navbar__links" id="services-page">Services</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#contact" class="navbar__links" id="contact-page">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+  <div class="hero" id="home">
+    <div class="hero__container">
+        <div><div class="bg"></div><div class="bg bg2"></div><div class="bg bg3"></div></div>
+        <h1 class="hero__heading"><span>GrinPy</span></h1>
+        <p class="hero__description">Prepare and Analyze</p>
+    </div>
+  </div>
+  <hr style="height: 4px; width:100%; border-width:0; color:rgb(97, 97, 97); background-color:rgba(97, 97, 97, 0.644);">
+<!-- About Section -->
+  <div class="main" id="about">
+    <div class="main__container" style="margin-bottom: 300px;">
+      <div class="main__content">
+        <h1>About</h1>
+        <p>GrinPy is a web-based graphical user interface (GUI) to prepare input files for MD simulations using GROMACS and facilitate different approaches for trajectory analysis. The purpose of this project is to provide users, especially those with little experience in command lines, with a more modern and unified platform to smoothly fulfill their tasks.</p>
+      </div>
+    </div>
+    <hr style="height: 4px; width:100%; border-width:0; color:rgb(97, 97, 97); background-color:rgba(97, 97, 97, 0.644);">
+  </div>
+<!-- Services Section -->
+  <div class="services" id="services">
+    <h1>SERVICES</h1>
+    <div class="services__wrapper">
+        <div class="services__card">
+            <h2 style="padding-top: 20px;">Preparation</h2>
+            <p style="padding-left:80px;padding-right:80px;">Generate all input files necessary to run a molecular dynamics simulation. </p>
+            <div class="vertical-position"><button class="main__btn"><a href="/prep">Prepare</a></button></div>
+        </div>
+        <div class="services__card">
+            <h2 style="padding-top: 20px;">Analysis</h2>
+            <p style="padding-left:80px;padding-right:80px;">Analyze resulting trajectories using commonly used and novel approaches.</p> 
+            <div class="vertical-position"><button class="main__btn"><a href="/analyze">Analyze</a></button></div> 
+        </div>
+    </div>
+    <hr style="height: 4px; width:100%; border-width:0; color:rgba(97, 97, 97, 0); background-color:rgba(97, 97, 97, 0.644);">
+  </div>
+
+<!--Contact section-->
+  <div class="contact4 position-relative" id="contact">
+    <div class="row no-gutters">
+      <div class="container" style="margin-top:6rem;align-items: center;">
+        <h1 style="margin-top: 30px;margin-left: 450px;margin-bottom: 40px;">CONTACT</h1>
+      </div>
+      <div class="container" style="background-color: #8c13aa3f;margin-left:100px;margin-right: 100px; margin-top: 35px;">
+        <p></p>
+        <p style="margin:0;padding-left: 50px;">Dr. Joseph Rebehmed</p>
+        <p style="margin:0;padding-left: 50px;">Assistant Professor of Bioinformatics</p>
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#111;&#115;&#101;&#112;&#104;&#46;&#114;&#101;&#98;&#101;&#104;&#109;&#101;&#100;&#64;&#108;&#97;&#117;&#46;&#101;&#100;&#117;&#46;&#108;&#98;" style="margin-bottom: 20px;text-decoration:none; color:#c37ed4;padding-left: 50px;">
+          <span class="e-mail" data-user="demheber.hpesoj" data-website="bl.ude.ual"></span>
+        </a>
+        <br></br>
+        <p style="margin:0;padding-left: 50px;">Tala El Yafawi</p>
+        <p style="margin:0;padding-left: 50px;">Bioinformatics Student</p>
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#97;&#108;&#97;&#46;&#101;&#108;&#121;&#97;&#102;&#97;&#119;&#105;&#64;&#108;&#97;&#117;&#46;&#101;&#100;&#117;" style="margin-bottom: 20px;text-decoration:none; color:#c37ed4;padding-left: 50px;">
+          <span class="e-mail" data-user="iwafayle.alat" data-website="ude.ual"></span>
+        </a>
+        <br></br>
+        <p style="margin:0;padding-left: 50px;">Lebanese American University</p>
+        <p style="margin:0;padding-left: 50px;">School of Arts and Sciences, Dept. of Computer Science & Mathematics</p>
+        <a href="https://soas.lau.edu.lb/academics/departments/computer-science-maths/" style="text-decoration:none; color:#c37ed4;padding-left: 50px;">https://soas.lau.edu.lb/</a>
+        <br></br>
+      </div>
+      <div class="right-image">
+        <iframe src="https://maps.google.com/maps?q=lebanese%20american%20university&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+        width="400px" height="349" frameborder="0"  style="margin-top:252px;padding-bottom:50px;margin-right: 100px;opacity: 80%;"></iframe>
+      </div>
+    </div>
+  </div>
+
+<!--Common script for each page + script to mark navbar while scrolling through sections-->
+  <script>
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.navbar__menu');
+    // Display Mobile Menu
+    const mobileMenu = () => {
+      menu.classList.toggle('is-active');
+      menuLinks.classList.toggle('active');
+    };
+    menu.addEventListener('click', mobileMenu);
+    // Show active menu when scrolling
+    const highlightMenu = () => {
+      const elem = document.querySelector('.highlight');
+      const homeMenu = document.querySelector('#home-page');
+      const aboutMenu = document.querySelector('#about-page');
+      const servicesMenu = document.querySelector('#services-page');
+      const contactMenu = document.querySelector('#contact-page');
+      let scrollPos = window.pageYOffset;
+      // adds 'highlight' class to navbar items
+      if (window.innerWidth > 960 && scrollPos < 500) {
+        homeMenu.classList.add('highlight');
+        aboutMenu.classList.remove('highlight');
+        return;
+      } else if (window.innerWidth > 960 && scrollPos < 1000) {
+        aboutMenu.classList.add('highlight');
+        homeMenu.classList.remove('highlight');
+        servicesMenu.classList.remove('highlight');
+        contactMenu.classList.remove('highlight');
+        return;
+      } else if (window.innerWidth > 960 && scrollPos < 2345) {
+        servicesMenu.classList.add('highlight');
+        aboutMenu.classList.remove('highlight');
+        contactMenu.classList.remove('highlight');
+        return;
+      } else if (window.innerWidth > 960 && scrollPos < 2800) {
+        contactMenu.classList.add('highlight');
+        servicesMenu.classList.remove('highlight');
+        return;
+      }
+      if ((elem && window.innerWIdth < 960 && scrollPos < 600) || elem) {
+        elem.classList.remove('highlight');
+      }
+    };
+    window.addEventListener('scroll', highlightMenu);
+    window.addEventListener('click', highlightMenu);
+    //  Close mobile Menu when clicking on a menu item
+    const hideMobileMenu = () => {
+      const menuBars = document.querySelector('.is-active');
+      if (window.innerWidth <= 768 && menuBars) {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.remove('active');
+      }
+    };
+    menuLinks.addEventListener('click', hideMobileMenu);
+    navLogo.addEventListener('click', hideMobileMenu);
+  </script>
+</body>
+
+</html>
